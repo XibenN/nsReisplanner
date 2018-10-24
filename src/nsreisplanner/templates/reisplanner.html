@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Reisplanner
+{% endblock %}
+
+{% block content %}
+
+    Reisplanner
+
+    <br/><br/>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% if request.POST %}
+        {{ apiData }}
+    {% endif %}
+{% endblock %}
