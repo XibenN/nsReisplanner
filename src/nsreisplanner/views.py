@@ -6,4 +6,6 @@ def home(request):
 
 def reisplanner(request):
     form = createForm(request)
-    return render(request, 'reisplanner.html', {'form': form, 'apiData': main})
+    result = main()
+
+    return render(request, 'reisplanner.html', {'form': form, 'vertrekTijd': result['vertrekTijd'], 'actueleReisTijd': result['actueleReisTijd'], 'status': result['status'], 'aantalOverstappen': result['aantalOverstappen']})

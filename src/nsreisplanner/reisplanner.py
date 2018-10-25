@@ -7,6 +7,7 @@ import json
 beginstation = ''
 eindstation = ''
 
+
 def createForm(request):
     global beginstation
     global eindstation
@@ -22,6 +23,7 @@ def createForm(request):
 
     return form
 
+
 def apiLinkGenerator():
     auth_details = ('xibennguyen@gmail.com', '-asP1nMTjIeMl7RCfbHdxsNPGPphXY-QS7O_Q0gTBgK3apOBtXec5w')
     api_url = 'http://webservices.ns.nl/ns-api-treinplanner?fromStation={}&toStation={}&departure=true'.format(
@@ -33,6 +35,7 @@ def apiLinkGenerator():
     jsonData = jsonLoads['ReisMogelijkheden']['ReisMogelijkheid']
 
     return jsonData
+
 
 def main():
     data = apiLinkGenerator()
@@ -47,15 +50,17 @@ def main():
 
         # Reis Deel
         reisDeel = data['ReisDeel']
-        vervoerder = reisDeel[0]['Vervoerder']
-        vervoerType = reisDeel[0]['VervoerType']
+        vervoerder = reisDeel['Vervoerder']
+        vervoerType = reisDeel['VervoerType']
         reisStops = []
 
         print('Om {} vertrekt er een trein naar {} met de vervoerder {} {}'.format(vertrekTijd[11:16], eindstation, vervoerder, vervoerType))
         print('De actuele reistijd naar {} is {}, de status is {}. Overstappen: {}'.format(eindstation, actueleReisTijd, status, aantalOverstappen))
 
-        for stops in reisDeel[0]['ReisStop']:
+        for stops in reisDeel['ReisStop']:
             stopNaam = stops['Naam']
             reisStops.append(stopNaam)
 
         print(*reisStops, sep=', ')
+
+        return {'vertrekTijd': vertrekTijd[11:16], 'actueleReisTijd': actueleReisTijd, 'status': status, 'aantalOverstappen': aantalOverstappen}

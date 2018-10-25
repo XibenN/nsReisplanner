@@ -1,7 +1,32 @@
 {% block content %}
 
+    {% if request.POST %}
     <div class="container">
+            <div class="row">
+                <div class="col-md-6 infobox">
+                    <div class="row">
+                        <div class="col-md-9 infoboxText">
+                            14:58 -> 16:14
+                        </div>
+                        <div class="col-md-1">
+                            {{ test }}
+                        </div>
+                        <div class="col-md-1">
+                            1x
+                        </div>
+                        <div class="col-md-1">
+                            6
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        <!--<div class="row">-->
+            <!--<div class="col-md-3">-->
+                <!--intercity + intercity-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
+    {% endif %}
 
 {% endblock %}
