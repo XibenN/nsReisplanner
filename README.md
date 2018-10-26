@@ -13,13 +13,14 @@ cd C:\
 Set-ExecutionPolicy Unrestricted  
   
 ^^ This makes it so you can use your Django commands everywhere.  
-  
+    
   
 Use a project interpreter, file > settings > project > project interpreter  
 If the interpreter "Python" is not selected, click on the dropdown and click "Show all"  
 Click the + button and click on "System Interpreter" and on OK. Make sure PIP is in the list.  
   
 Go to the directory in Powershell.  
+cd C:\Users\(YOUR_USER)\PycharmProjects\nsReisplanner\
 type 'pip install virtualenv'  
 (Make sure Powershell is opened as Administrator.)  
   
