@@ -1,4 +1,7 @@
-Uninstall your current Python  
+Uninstall your current Python 
+Open Control Panel  
+Click "Uninstall a Program"  
+Scroll down to Python and click uninstall for all versions you have.  
 Download the latest Python here: https://www.python.org/downloads/  
 In the setup make sure you click CUSTOM and tick the "Add Python 3.7 to PATH"  
   
