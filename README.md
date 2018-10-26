@@ -29,6 +29,7 @@ virtualenv .
 pip install django   
 pip install xmltodict  
 pip install request  
+pip install requests  
   
 Mac:  
 virtualenv .  
@@ -36,3 +37,4 @@ source ./bin/activate
 pip install django  
 pip install xmltodict  
 pip install request  
+pip install requests  
