@@ -9,7 +9,7 @@ and click on Clone
   
 Windows:  
 Go into Powershell as administrator and type in:  
-cd C:  
+cd C:\  
 Set-ExecutionPolicy Unrestricted  
   
 ^^ This makes it so you can use your Django commands everywhere.  
