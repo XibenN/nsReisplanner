@@ -1,6 +1,6 @@
 Uninstall your current Python  
 Download the latest Python here: https://www.python.org/downloads/   
-In the setup make sure you tick the "Add Python 3.7 to PATH"  
+In the setup make sure you click CUSTOM and tick the "Add Python 3.7 to PATH"  
   
 Pycharm:  
 Start Pycharm  
