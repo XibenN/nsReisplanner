@@ -2,6 +2,10 @@ Uninstall your current Python
 Download the latest Python here: https://www.python.org/downloads/   
 In the setup make sure you tick the "Add Python 3.7 to PATH"  
   
+Pycharm:  
+Start Pycharm  
+Click on VCS > Checkout from Version Control > Git > Paste this Github URL: https://github.com/XibenN/nsReisplanner and click on Clone
+  
 Windows:  
 Go into Powershell as administrator and type in:  
 cd C:  
