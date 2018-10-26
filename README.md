@@ -32,6 +32,8 @@ pip install request
 pip install requests  
 cd src  
 python manage.py runserver  
+
+if requests and xmltodict cannot be found, go to file > settings > project interpreter > + button > search xmltodict and requests and install the package.
   
 Mac:  
 virtualenv .  
