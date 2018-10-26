@@ -30,6 +30,8 @@ pip install django
 pip install xmltodict  
 pip install request  
 pip install requests  
+cd src  
+python manage.py runserver  
   
 Mac:  
 virtualenv .  
@@ -38,3 +40,5 @@ pip install django
 pip install xmltodict  
 pip install request  
 pip install requests  
+cd src  
+python manage.py runserver  
