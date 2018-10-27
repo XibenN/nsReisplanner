@@ -21,12 +21,13 @@
 
     {% if jsonData %}
         {% for data in jsonData %}
+            {{ reisDeel }}
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 infobox">
                         <div class="row">
                             <div class="col-md-9 infoboxText">
-                                {{ data.VertrekTijdFormat }} -> {{ data.AankomstTijdFormat }}
+                                <strong>{{ data.VertrekTijdFormat }} -> {{ data.AankomstTijdFormat }}</strong>{{ data.AankomstVertraging }}
                             </div>
                             <div class="col-md-1">
                                 {{ data.GeplandeReisTijd }}
@@ -35,7 +36,7 @@
                                 {{ data.AantalOverstappen }}x
                             </div>
                             <div class="col-md-1">
-                                6
+                                {{ spoorNummer }}
                             </div>
                         </div>
                     </div>
