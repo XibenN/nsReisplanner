@@ -10,45 +10,39 @@
 
     <br/><br/>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+    <form method="get">
+        <label for="beginstation">Beginstation:</label>
+        <input type="text" name="beginstation" id="beginstation">
+        <label for="eindstation">Eindstation:</label>
+        <input type="text" name="eindstation" id="eindstation">
+        <button type="submit">Submit</button>
     </form>
 
-    {% if request.POST %}
-
-    <div class="container">
-            <div class="row">
-                <div class="col-md-6 infobox">
-                    <div class="row">
-                        <div class="col-md-9 infoboxText">
-                            {{ vertrekTijd }} -> 16:14 {{ status }}
-                        </div>
-                        <div class="col-md-1">
-                            {{ actueleReisTijd }}
-                        </div>
-                        <div class="col-md-1">
-                            {{ aantalOverstappen }}x
-                        </div>
-                        <div class="col-md-1">
-                            6
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-9">
-
+    {% if jsonData %}
+        {% for data in jsonData %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 infobox">
+                        <div class="row">
+                            <div class="col-md-9 infoboxText">
+                                {{ data.VertrekTijdFormat }} -> {{ data.AankomstTijdFormat }}
+                            </div>
+                            <div class="col-md-1">
+                                {{ data.GeplandeReisTijd }}
+                            </div>
+                            <div class="col-md-1">
+                                {{ data.AantalOverstappen }}x
+                            </div>
+                            <div class="col-md-1">
+                                6
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        <!--<div class="row">-->
-            <!--<div class="col-md-3">-->
-                <!--intercity + intercity-->
-            <!--</div>-->
-        <!--</div>-->
-    </div>
+            <br/>
+        {% endfor %}
     {% endif %}
 
 {% endblock %}
