@@ -8,7 +8,6 @@ def home(request):
 
 def reisplanner(request):
     jsonData = {}
-    spoorNummer = []
 
     if 'beginstation' in request.GET and 'eindstation' in request.GET:
         beginstation = request.GET['beginstation']
@@ -23,17 +22,7 @@ def reisplanner(request):
         jsonData = jsonLoads['ReisMogelijkheden']['ReisMogelijkheid']
 
         for reis in jsonData:
-            for ReisDeel in reis['ReisDeel']:
-                for reisStop in ReisDeel['ReisStop']:
-                    print(reisStop['Naam'])
-                    print(reisStop['Tijd'])
-
-                    if 'Spoor' in reisStop and reisStop['Naam'] == beginstation:
-                        print(reisStop['Spoor']['#text'])
-                        spoorNummer = reisStop['Spoor']['#text']
-                    else:
-                        print('Hier gaat de trein alleen langs')
-
+            reis.update({'SpoorNummer': reis['ReisDeel'][0]['ReisStop'][0]['Spoor']['#text']})
 
         for date in jsonData:
             date.update({'VertrekTijdFormat': date['GeplandeVertrekTijd'][11:16]})
@@ -42,8 +31,7 @@ def reisplanner(request):
         print(json.dumps(jsonData, indent=4))
 
     return render(request, 'reisplanner.html', {
-        'jsonData': jsonData,
-        'spoorNummer': spoorNummer
+        'jsonData': jsonData
     })
 
 
