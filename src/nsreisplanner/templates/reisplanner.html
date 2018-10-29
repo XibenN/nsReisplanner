@@ -25,6 +25,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 infobox">
+                        {% if data.Status == 'VERTRAAGD' or data.Status == 'NIET MOGELIJK'%}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="badge badge-danger">{{ data.Status }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
                         <div class="row">
                             <div class="col-md-9 infoboxText">
                                 <strong>{{ data.VertrekTijdFormat }} -> {{ data.AankomstTijdFormat }}</strong>{{ data.AankomstVertraging }}
