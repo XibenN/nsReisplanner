@@ -1,8 +1,9 @@
-.infobox {
-    padding: 15px 40px 15px 30px;
-    border: 1px solid black;
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
 }
-
-.infoboxText {
-    color: #003082;
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../images/trainstation.jpeg') left bottom 40% no-repeat #46B6AC;
 }
