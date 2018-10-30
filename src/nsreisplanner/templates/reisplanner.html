@@ -6,44 +6,70 @@
 
 {% block content %}
 
-    Reisplanner
-
-    <br/><br/>
-
+{% if ErrorMessage %}
+    <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
+        <span class="mdl-chip__text">{{ ErrorMessage }}</span>
+    </span>
+{% endif %}
 
     <form method="get">
-        <label for="beginstation">Beginstation:</label>
-        <input type="text" name="beginstation" id="beginstation">
-        <label for="eindstation">Eindstation:</label>
-        <input type="text" name="eindstation" id="eindstation">
-        <button type="submit">Submit</button>
+        {% csrf_token %}
+        <div class="ns__form">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="beginstation" name="beginstation" value="Amersfoort" readonly>
+                <label class="mdl-textfield__label" for="beginstation">Wat is je beginstation?</label>
+            </div>
+
+            <label for="switch1" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+              <input type="checkbox" id="switch1" class="mdl-switch__input">
+              <span class="mdl-switch__label">Beginstation veranderen</span>
+            </label>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="eindstation" name="eindstation">
+                <label class="mdl-textfield__label" for="eindstation">Waar wil je naar toe?</label>
+            </div>
+
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent ns__form-button" type="Submit">Submit</button>
+        </div>
     </form>
 
-    {% if jsonData %}
+    {% if jsonData and not ErrorMessage %}
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">train</i></th>
+            <th class="mdl-data-table__cell--non-numeric">Bestemming</th>
+            <th class="mdl-data-table__cell--non-numeric">Vertrek</th>
+            <th class="mdl-data-table__cell--non-numeric">Aankomst</th>
+            <th class="mdl-data-table__cell--non-numeric">Spoor</th>
+            <th class="mdl-data-table__cell--non-numeric"><!-- Pijl icon --></th>
+        </tr>
+        </thead>
+        <tbody>
         {% for data in jsonData %}
-            {{ reisDeel }}
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 infobox">
-                        <div class="row">
-                            <div class="col-md-9 infoboxText">
-                                <strong>{{ data.VertrekTijdFormat }} -> {{ data.AankomstTijdFormat }}</strong>{{ data.AankomstVertraging }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ data.GeplandeReisTijd }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ data.AantalOverstappen }}x
-                            </div>
-                            <div class="col-md-1">
-                                {{ data.SpoorNummer }}
-                            </div>
-                        </div>
-                    </div>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.ReisDeel.0.Vervoerder }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.Bestemming }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.VertrekTijdFormat }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.AankomstTijdFormat }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.SpoorNummer}}</td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <a href="{% url 'details' %}" id="route-button-0" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">arrow_forward</i>
+                </a>
+                <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="route-button-0">
+                    Bekijk informatie
                 </div>
-            </div>
-            <br/>
+            </td>
+        </tr>
+        <!--<tr>-->
+            <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{ data.ReisDeel.0.VervoerType }}</td>-->
+        <!--</tr>-->
         {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
 
 {% endblock %}
