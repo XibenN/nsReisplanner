@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="get">
+        {% csrf_token %}
+        <div class="ns__form">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="station" name="station" value="Amersfoort" readonly>
+                <label class="mdl-textfield__label" for="station">Station</label>
+            </div>
+
+            <label for="switch2" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+              <input type="checkbox" id="switch2" class="mdl-switch__input">
+              <span class="mdl-switch__label">Station veranderen</span>
+            </label>
+            <br/><br/>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent ns__form-button" type="Submit">Submit</button>
+        </div>
+    </form>
+
+    {% if jsonData %}
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">train</i></th>
+            <th class="mdl-data-table__cell--non-numeric">Bestemming</th>
+            <th class="mdl-data-table__cell--non-numeric">Vertrek</th>
+            <th class="mdl-data-table__cell--non-numeric">Spoor</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in jsonData %}
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.Vervoerder }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.EindBestemming }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.VertrekTijdFormat }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ data.SpoorNummer }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
