@@ -42,7 +42,7 @@ pip install requests
 cd src  
 python manage.py runserver  
   
-** If you still get errors regarding xmltodict and requests, do this. Otherwise skip this **
+** If you still get errors regarding xmltodict and requests, do this. Otherwise skip this **  
 file > settings > project > project interpreter > + button > install xmltodict, requests, django
   
 Mac:  
