@@ -7,6 +7,7 @@ def home(request):
     return render(request, 'home.html', {})
 
 def reisplanner(request):
+    global jsonData
     jsonData = {}
     ErrorMessage = ''
 
@@ -27,12 +28,14 @@ def reisplanner(request):
                 reis.update({'VertrekTijdFormat': reis['GeplandeVertrekTijd'][11:16], 'AankomstTijdFormat': reis['GeplandeAankomstTijd'][11:16]})
                 try:
                     if 'Spoor' in reis['ReisDeel'][0]['ReisStop'][0]:
-                        reis.update({'SpoorNummer': reis['ReisDeel'][0]['ReisStop'][0]['Spoor']['#text'], 'Bestemming': reis['ReisDeel'][-1]['ReisStop'][-1]['Naam'], 'Vervoerder': reis['ReisDeel'][0]['Vervoerder']})
-                        print(json.dumps(reis['ReisDeel'][0]['ReisStop'], indent=4))
+                        reis.update({'SpoorNummer': reis['ReisDeel'][0]['ReisStop'][0]['Spoor']['#text'], 'Bestemming': reis['ReisDeel'][-1]['ReisStop'][-1]['Naam'], 'Vervoerder': reis['ReisDeel'][0]['Vervoerder'], 'RitNummer': reis['ReisDeel'][0]['RitNummer']})
+
                 except:
-                    reis.update({'SpoorNummer': reis['ReisDeel']['ReisStop'][0]['Spoor']['#text'], 'Bestemming': reis['ReisDeel']['ReisStop'][-1]['Naam'], 'Vervoerder': reis['ReisDeel']['Vervoerder']})
+                    reis.update({'SpoorNummer': reis['ReisDeel']['ReisStop'][0]['Spoor']['#text'], 'Bestemming': reis['ReisDeel']['ReisStop'][-1]['Naam'], 'Vervoerder': reis['ReisDeel']['Vervoerder'], 'RitNummer': reis['ReisDeel']['RitNummer']})
     except:
         ErrorMessage = 'Ongeldige station ingevoerd.'
+
+    print(json.dumps(jsonData, indent=4))
 
     return render(request, 'reisplanner.html', {
         'jsonData': jsonData,
@@ -40,8 +43,15 @@ def reisplanner(request):
     })
 
 def details(request):
+    treinData = {}
+    ritNummer = request.GET.get('ritnummer', '')
+
+    for data in jsonData:
+        if data['RitNummer'] == ritNummer:
+            treinData = data
+
     return render(request, 'details.html', {
-        
+        'treinData': treinData
     })
 
 def vertrekTijden(request):

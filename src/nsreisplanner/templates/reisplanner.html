@@ -56,7 +56,7 @@
             <td class="mdl-data-table__cell--non-numeric">{{ data.AankomstTijdFormat }}</td>
             <td class="mdl-data-table__cell--non-numeric">{{ data.SpoorNummer}}</td>
             <td class="mdl-data-table__cell--non-numeric">
-                <a href="{% url 'details' %}" id="route-button-0" class="mdl-button mdl-js-button mdl-button--icon">
+                <a href="{% url 'details' %}?ritnummer={{ data.RitNummer }}" id="route-button-0" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">arrow_forward</i>
                 </a>
                 <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="route-button-0">
@@ -64,9 +64,6 @@
                 </div>
             </td>
         </tr>
-        <!--<tr>-->
-            <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{ data.ReisDeel.0.VervoerType }}</td>-->
-        <!--</tr>-->
         {% endfor %}
         </tbody>
     </table>
