@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Hallo
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Status</th>
+            <th class="mdl-data-table__cell--non-numeric">Vertrek</th>
+            <th class="mdl-data-table__cell--non-numeric">Aankomst</th>
+            <th class="mdl-data-table__cell--non-numeric">Reistijd</th>
+            <th class="mdl-data-table__cell--non-numeric">Overstappen</th>
+            <th class="mdl-data-table__cell--non-numeric">Reis Stops</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ treinData.Status }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ treinData.VertrekTijdFormat }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ treinData.AankomstTijdFormat }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ treinData.ActueleReisTijd }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ treinData.AantalOverstappen }}x</td>
+            <td class="mdl-data-table__cell--non-numeric">{% for stops in treinData.ReisDeel.ReisStop %} {{ stops.Naam }} {% endfor %}</td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}
