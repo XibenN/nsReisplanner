@@ -24,7 +24,7 @@ Type 'Y'
 ^^ This makes it so you can use your Django commands everywhere.  
   
 Go to the directory in Powershell.  
-**Example, insert your pc username at YOUR_USER:**
+**Example, insert your pc username at YOUR_USER:**  
 cd C:\Users\YOUR_USER\PycharmProjects\nsReisplanner  
   
 type 'pip install virtualenv'  
