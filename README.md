@@ -19,6 +19,7 @@ Windows:
 Go into Powershell as administrator and type in:  
 cd C:\  
 Set-ExecutionPolicy Unrestricted  
+Type 'Y'  
   
 ^^ This makes it so you can use your Django commands everywhere.  
   
