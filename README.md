@@ -1,3 +1,7 @@
+Requirements:  
+Basic knowledge of the CMD/Powershell  
+Walk through this guide STEP BY STEP  
+  
 Uninstall your current Python 
 Open Control Panel  
 Click "Uninstall a Program"  
@@ -9,6 +13,7 @@ Pycharm:
 Start Pycharm  
 Click on VCS > Checkout from Version Control > Git > Paste this Github URL: https://github.com/XibenN/nsReisplanner  
 and click on Clone  
+Make sure you have git installed, if you get an error in the bottom-right, click on download and restart your PC and try again.
   
 Windows:  
 Go into Powershell as administrator and type in:  
@@ -17,14 +22,15 @@ Set-ExecutionPolicy Unrestricted
   
 ^^ This makes it so you can use your Django commands everywhere.  
   
-Use a project interpreter, file > settings > project > project interpreter  
-If the interpreter "Python" is not selected, click on the dropdown and click "Show all"  
-Click the + button and click on "System Interpreter" and on OK. Make sure PIP is in the list.  
-  
 Go to the directory in Powershell.  
 cd C:\Users(YOUR_USER)\PycharmProjects\nsReisplanner  
 type 'pip install virtualenv'  
 (Make sure Powershell is opened as Administrator.)  
+  
+** If there is already an project interpreter selected, skip this step **  
+Use a project interpreter, file > settings > project > project interpreter  
+If the interpreter "Python" is not selected, click on the dropdown and click "Show all"  
+Click the + button and click on "System Interpreter" and on OK. Make sure PIP is in the list.  
   
 Windows:  
 virtualenv .  
