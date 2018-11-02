@@ -42,6 +42,7 @@ pip install requests
 cd src  
 python manage.py runserver  
   
+** If you still get errors regarding xmltodict and requests, do this. Otherwise skip this **
 file > settings > project > project interpreter > + button > install xmltodict, requests, django
   
 Mac:  
@@ -53,3 +54,14 @@ pip install request
 pip install requests  
 cd src  
 python manage.py runserver  
+  
+  
+Your server should be running now, go to your webbrowser and go to localhost:8000  
+  
+When you want to start up the server again from the start you'd have to do this:
+  
+Go to the project folder in powershell with admin rights  
+Type './Scripts/Activate' to activate the virtual environment  
+**On MAC: 'source ./bin/activate'**  
+Then cd to the src folder  
+Type 'python manage.py runserver'  
