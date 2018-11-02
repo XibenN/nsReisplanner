@@ -58,6 +58,7 @@ python manage.py runserver
   
 Your server should be running now, go to your webbrowser and go to localhost:8000  
   
+  
 When you want to start up the server again from the start you'd have to do this:
   
 Go to the project folder in powershell with admin rights  
