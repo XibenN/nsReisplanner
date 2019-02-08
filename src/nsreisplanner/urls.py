@@ -7,3 +7,4 @@ urlpatterns = [
     url(r'^details/', views.details, name='details'),
     url(r'^vertrektijden/', views.vertrekTijden, name='vertrektijden'),
 ]
+# jasofas
